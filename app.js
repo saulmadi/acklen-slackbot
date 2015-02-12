@@ -7,7 +7,7 @@
 var exec = require('child_process').exec;
 
 // Declare Runtime Environment Variables
-var config = require('./config.js');
+// var config = require('./config.js');
 
 // Run Robot
 exec('coffee node_modules/hubot/bin/hubot', function (error, stdout, stderr) {

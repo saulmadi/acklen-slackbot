@@ -1,1 +1,1 @@
-web: bin/hubot -a campfire -n acklen-hubot
+web: bin/hubot -a slack -n slackbot

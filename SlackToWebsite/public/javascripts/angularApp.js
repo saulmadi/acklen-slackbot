@@ -5,12 +5,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
    .state('SlackToWebSite', {
      url: '/SlackToWebSite',
      templateUrl: '/index.html',
-     controller: 'MainCtrl',
-     resolve: {
-      postPromise: ['Messages', function(messages){
-        return messages.getAll();
-      }]
-    }
+     controller: 'MainCtrl'
    });
 
  $urlRouterProvider.otherwise('SlackToWebSite');

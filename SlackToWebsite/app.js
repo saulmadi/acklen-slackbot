@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/SlackToWebsite');
 require('./models/SlackMessages');
 
+var routes = require('./routes/index');
 var messages = require('./routes/messages'); 
 var users = require('./routes/users');
 var app = express();
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/', routes);
 app.use('/api', messages);
 app.use('/users', users);
 

@@ -7,4 +7,4 @@ var SlackMessageSchema = new mongoose.Schema({
     DateTime: Date
 });
 
-mongoose.model('SlackMessage', SlackMessageSchema);
+mongoose.model('SlackLogger', SlackMessageSchema);

@@ -16,27 +16,27 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
  $urlRouterProvider.otherwise('SlackToWebSite');
 }]);
 
-app.factory('Messages', [function($http){
+app.factory('Messages', ['$http', function($http){
    var o = { 
-      messages:{'message1', 'message2', 'message3'} 
+      messages:['message1', 'message2', 'message3'] 
     };
 
     o.getAll = function() {
-    return $http.get('/messages').success(function(data){
+    return $http.get('/api/messages').success(function(data){
       angular.copy(data, o.messages);
     });
   };
 
-   return data;
+   return o;
 }]);
 
-app.controller('MainCtrl', ['$scope', 'Messages'
-   function($scope) {
+app.controller('MainCtrl', ['$scope', 'Messages',
+   function($scope, Messages) {
      $scope.numberMessages = '';
      $scope.channelName = '';
      $scope.messages = Messages.messages;
 
      $scope.getChannelMessages = function(){
-        
+        Messages.getAll();
      };
 }]);

@@ -13,7 +13,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 app.factory('Messages', ['$http', function($http){
    var o = { 
-      messages:['message1', 'message2', 'message3'] 
+      messages:[] 
     };
 
     o.getAll = function() {

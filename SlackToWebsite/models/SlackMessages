@@ -4,7 +4,7 @@ var SlackMessageSchema = new mongoose.Schema({
     ChannelName: String,
     Author: String,
     SlackMessage: String,
-    DateTime: Date
+    SlackDateTime: Date
 });
 
-mongoose.model('SlackLogger', SlackMessageSchema);
+mongoose.model('SlackMessages', SlackMessageSchema, 'SlackLogger');

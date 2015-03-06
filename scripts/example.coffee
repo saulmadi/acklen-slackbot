@@ -41,4 +41,4 @@ module.exports = (robot) ->
       return error err if err
 
       collection = new Collection client, 'SlackLogger'
-      collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,SlackMessage:robot.message.text,DateTime:new Date()}, {w:0})
+      collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})

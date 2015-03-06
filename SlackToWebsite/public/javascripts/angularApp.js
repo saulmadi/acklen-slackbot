@@ -16,8 +16,8 @@ app.factory('Messages', ['$http', function($http){
       messages:[] 
     };
 
-    o.getAll = function() {
-    return $http.get('/api/messages').success(function(data){
+    o.getAll = function(numMessages, channelName) {
+    return $http.get('/api/messages/'+ numMessages + '/' + channelName).success(function(data){
       angular.copy(data, o.messages);
     });
   };
@@ -32,6 +32,6 @@ app.controller('MainCtrl', ['$scope', 'Messages',
      $scope.messages = Messages.messages;
 
      $scope.getChannelMessages = function(){
-        Messages.getAll();
+        Messages.getAll($scope.numberMessages, $scope.channelName);
      };
 }]);

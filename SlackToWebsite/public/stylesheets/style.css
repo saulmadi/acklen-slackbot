@@ -16,3 +16,9 @@ a {
 .col {
 	float: right;
 }
+
+.messageRow {
+	margin-left: 100px;
+	margin-top: 20px;
+	width: 70%;
+}

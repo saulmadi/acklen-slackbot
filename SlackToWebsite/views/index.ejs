@@ -18,9 +18,12 @@
    </div>
   </br>
    <button type="button" id="getMessages" ng-click="getChannelMessages()" class="row">Get Messages</button>
-
-   <div ng-repeat="message in messages">
-     {{message}}
+ </br>
+   <div class="row" ng-repeat="message in messages">      
+      </br>
+      {{message.Author + '(' + message.SlackDateTime + '):'}}
+      </br>
+      {{message.SlackMessage}}
    </div>
   </body>
 </html>

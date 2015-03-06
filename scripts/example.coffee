@@ -16,10 +16,10 @@ Db = mongodb.Db
 
 module.exports = (robot) ->
   user = "admin"
-  pass = "password"
-  host = "localhost"
-  port = "27017"
-  dbname = "SlackToWebSite"
+  pass = "root"
+  host = "ds051831.mongolab.com"
+  port = "51831"
+  dbname = "heroku_app34060973"
 
   console.log "Started logging"
   robot.hear //, (robot) ->
@@ -40,5 +40,12 @@ module.exports = (robot) ->
     db.open (err, client) ->
       return error err if err
 
-      collection = new Collection client, 'SlackLogger'
-      collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})
+      console.log "Database Open..."
+
+      db.authenticate user, pass, (err, success) ->
+        return error err if err
+
+        console.log "Successfully authenticated with mongo..."
+
+        collection = new Collection client, 'SlackLogger'
+        collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})

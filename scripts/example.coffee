@@ -23,11 +23,12 @@ module.exports = (robot) ->
 
   console.log "Started logging"
   robot.hear //, (robot) ->
+      #console.log(robot)
       console.log(formatMessage(robot))
       insertToDatabase(robot)
 
   formatMessage = (robot) ->
-     "#{new Date()} #{robot.message.user.room}: #{robot.message.user.real_name}: #{robot.message.text}\n"
+     "#{new Date()} #{robot.message.user.room}: #{robot.message.user.real_name}: #{robot.message.user.email_address} #{robot.message.text}\n"
 
   error = (err) ->
     console.log "==MONGO UNAVAILABLE=="
@@ -48,4 +49,4 @@ module.exports = (robot) ->
         console.log "Successfully authenticated with mongo..."
 
         collection = new Collection client, 'SlackLogger'
-        collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})
+        collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,EmailAddress:robot.message.user.email_address,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})

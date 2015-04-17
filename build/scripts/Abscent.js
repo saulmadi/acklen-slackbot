@@ -42,7 +42,9 @@ function Abscent(robot) {
     robot.respond(/abscence help/i, function (msg) {
         msg.send('http://hola.com');
     });
-    robot.hear(/ /i, function (msg) {
+    robot.hear(/(^|\W)@\w+/g, function (msg) {
+        console.log(msg.message.text);
+        console.log(msg.match);
     });
 }
 function saveAbscence(command) {

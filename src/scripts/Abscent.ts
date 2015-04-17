@@ -59,8 +59,9 @@ function Abscent(robot: any) {
                 msg.send('http://hola.com');
             });
 
-    robot.hear(/ /i,
+    robot.hear(/(^|\W)@\w+/g,
         (msg: any) => {
+            console.log(msg.match);
 
         });
 }

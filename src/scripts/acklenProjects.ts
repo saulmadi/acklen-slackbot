@@ -1,4 +1,5 @@
 /// <reference path="../../typings/node/node.d.ts"/>
+/// <reference path="../../typings/underscore/underscore.d.ts"/>
 // Description
 //  A Hubot script written in TypeScript to show information about acklen avenue project
 //
@@ -12,13 +13,13 @@
 //   Frank Rodriguez <frankhn0801@gmail.com>
 
 function AcklenProjects(robot: any) {
-  var fs = require('fs');
-  var projects = JSON.parse(fs.readFileSync('project.json', 'utf8'));
-  var _ = require('underscore');
+
+  var fs: any = require('fs');
+  var projects: any = JSON.parse(fs.readFileSync('project.json', 'utf8'));
 
  robot.respond(/create notes for (.*)/i, (msg: any) => {
     var projectName = msg.match[1];
-    var project = _.filter(projects, function(p){
+    var project = _.filter(projects, function(p:any){
       return p.name.toLowerCase() === projectName.toLowerCase();
     });
     if (project.length === 0){
@@ -37,7 +38,7 @@ function AcklenProjects(robot: any) {
     var value: string = msg.match[3];
     var projectExist: boolean =false;
 
-    _.each(projects, function(p){
+    _.each(projects, function(p:any){
       if(p.name.toLowerCase() === projectName.toLowerCase())
       {
         p[variableName] = value;
@@ -55,7 +56,7 @@ function AcklenProjects(robot: any) {
   robot.respond(/list (.*) notes/i, (msg:any) =>{
     var projectName: string  = msg.match[1];
 
-    var project = _.filter(projects, function(p){
+    var project = _.filter(projects, function(p:any){
       return p.name.toLowerCase() === projectName.toLowerCase();
     });
 
@@ -96,7 +97,7 @@ function AcklenProjects(robot: any) {
        var projectName: string = msg.match[2];
        var newValue: string = msg.match[3];
 
-       var project = _.filter(projects, function(p) {
+       var project = _.filter(projects, function(p:any) {
            return p.name.toLowerCase() === projectName.toLowerCase();
        });
 
@@ -112,7 +113,7 @@ function AcklenProjects(robot: any) {
            else {
                var response: string = '';
 
-               _.each(projects, function(p) {
+               _.each(projects, function(p:any) {
                    if (p.name.toLowerCase() === projectName.toLowerCase()) {
                        p[property] = newValue;
                    }

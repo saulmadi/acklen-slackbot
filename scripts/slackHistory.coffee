@@ -21,18 +21,11 @@ module.exports = (robot) ->
   port = "51831"
   dbname = "heroku_app34060973"
 
-  console.log "Started logging"
   robot.hear //, (robot) ->
-      #console.log(robot)
-      console.log(formatMessage(robot))
       insertToDatabase(robot)
 
   formatMessage = (robot) ->
      "#{new Date()} #{robot.message.user.room}: #{robot.message.user.real_name}: #{robot.message.user.email_address} #{robot.message.text}\n"
-
-  error = (err) ->
-    console.log "==MONGO UNAVAILABLE=="
-    console.log err      
 
   insertToDatabase = (robot) ->
     server = new Server host, port, {}
@@ -41,12 +34,8 @@ module.exports = (robot) ->
     db.open (err, client) ->
       return error err if err
 
-      console.log "Database Open..."
-
       db.authenticate user, pass, (err, success) ->
         return error err if err
-
-        console.log "Successfully authenticated with mongo..."
 
         collection = new Collection client, 'SlackLogger'
         collection.save({ChannelName:robot.message.user.room,Author:robot.message.user.real_name,EmailAddress:robot.message.user.email_address,SlackMessage:robot.message.text,SlackDateTime:new Date()}, {w:0})

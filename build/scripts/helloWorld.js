@@ -10,14 +10,12 @@
 //
 // Author:
 //   Byron Sommardahl <byron@acklenavenue.com>
-
-function HelloWorld(robot: any) {
-	robot.respond(/hello/i, (msg: any) => {
-		msg.reply('Howdy!')	
-	})
-
-	robot.hear(/howdy/i, (msg: any) => {
-		msg.send('Hola!')
-	})
+function HelloWorld(robot) {
+    robot.respond(/hello/i, function (msg) {
+        msg.reply('Howdy!');
+    });
+    robot.hear(/howdy/i, function (msg) {
+        msg.send('Hola!');
+    });
 }
-export = HelloWorld;
+module.exports = HelloWorld;

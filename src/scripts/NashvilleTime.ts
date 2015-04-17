@@ -11,13 +11,9 @@
 // Author:
 //   Byron Sommardahl <byron@acklenavenue.com>
 
-function HelloWorld(robot: any) {
-	robot.respond(/hello/i, (msg: any) => {
-		msg.reply('Howdy!')	
-	})
-
-	robot.hear(/howdy/i, (msg: any) => {
-		msg.send('Hola!')
-	})
+function NashvilleTime(robot: any) {
+	robot.hear(/time zone/i, (msg: any) => {
+		msg.reply("Only a sith deals in times other than Nashville Time!")	
+	})	
 }
-export = HelloWorld;
+export = NashvilleTime;

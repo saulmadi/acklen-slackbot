@@ -17,7 +17,7 @@ Yes, Hubot is written in coffeescript. And, normally, hubot scripts are also wri
 - Clone this repo and navigate to the project folder
 - `npm install`
 
-###Test the hubot
+###Test the hubot 
 - `run.bat` will run grunt to compile the ts file(s) and then runs `bin/hubot`
 - Try typing `howdy` at the prompt... you should get a response.
 

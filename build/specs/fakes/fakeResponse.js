@@ -23,6 +23,13 @@ var FakeResponse = (function () {
         this.registerMatches = function (matches) {
             _this.match = matches;
         };
+        this.randomResponseIndex = 0;
+        this.random = function (arr) {
+            return arr[_this.randomResponseIndex];
+        };
+        this.setRandomResponse = function (index) {
+            _this.randomResponseIndex = index;
+        };
     }
     return FakeResponse;
 })();

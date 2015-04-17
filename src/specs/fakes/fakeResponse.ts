@@ -32,4 +32,14 @@ export class FakeResponse{
 	registerMatches = (matches: Array<string>) => {
 		this.match = matches;
 	};
+
+	private randomResponseIndex: number = 0;
+
+	random = (arr: Array<any>): any => {
+		return arr[this.randomResponseIndex];
+	};
+
+	setRandomResponse = (index: number) => {
+	 	this.randomResponseIndex = index;
+	};
 }

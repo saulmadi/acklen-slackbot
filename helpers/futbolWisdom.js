@@ -8,6 +8,7 @@ var HubotFutbolWisdom = (function () {
         helpMessage += "premier-league fixtures | Return todays date fixtures for England's Premier League \n";
         helpMessage += "la-liga standings | Return the actual season standing for Spain's La Liga \n";
         helpMessage += "la-liga fixtures | Return todays date fixtures for Spains's La Liga \n";
+        helpMessage += "real-madrid fixtures | Return todays date fixtures for Real Madrid \n";
         return helpMessage;
     };
     HubotFutbolWisdom.prototype.showTeamFixtures = function (id) {

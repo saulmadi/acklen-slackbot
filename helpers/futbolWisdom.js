@@ -37,7 +37,14 @@ var HubotFutbolWisdom = (function () {
     };
     HubotFutbolWisdom.prototype.showLeagueTable = function (id) {
         var urlToGet = 'http://api.football-data.org/alpha/soccerseasons/' + id + '/leagueTable';
-        var promise = this.promise(urlToGet);
+        var options = {
+            method: 'GET',
+            uri: urlToGet,
+            headers: {
+                "X-Auth-Token": "ad4d8f3691544a078374593ef45b89f0"
+            }
+        };
+        var promise = this.promise(options);
         return promise.then(function (body) {
             var leagueTable = JSON.parse(body);
             var message = "";
@@ -65,63 +72,29 @@ var HubotFutbolWisdom = (function () {
         var day = (dateTimeToday.getDate()) <= 9 ? "0" + (dateTimeToday.getDate()) : (dateTimeToday.getDate());
         var dateTimeTodayString = dateTimeToday.getFullYear() + "-" + month + "-" + day;
         var urlToGet = "http://api.football-data.org/alpha/soccerseasons/" + id + "/fixtures?timeFrameStart=" + dateTimeTodayString + "&timeFrameEnd=" + dateTimeTodayString;
-        var promiseFixtures = this.promise(urlToGet);
+        var options = {
+            method: 'GET',
+            uri: urlToGet,
+            headers: {
+                "X-Auth-Token": "ad4d8f3691544a078374593ef45b89f0"
+            }
+        };
+        var promiseFixtures = this.promise(options);
         return promiseFixtures.then(function (body) {
             var fixtures = JSON.parse(body);
             var message = "";
             if (fixtures.fixtures.length > 0) {
-                message = "MatchDay | Home Team | Away Team | Status \n";
+                message = "\n` MatchDay ` | ` Home Team                            ` | ` Away Team                            ` | ` Status         ` \n";
                 for (var i = 0; i < fixtures.fixtures.length; i++) {
                     var game = fixtures.fixtures[i];
-                    message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
-                }
-                return message;
-            }
-            else {
-                message = "No games for today. Go back to work.";
-            }
-            return message;
-        });
-    };
-    HubotFutbolWisdom.prototype.showPremierLeagueFixtures = function () {
-        var dateTimeToday = new Date();
-        var month = (dateTimeToday.getMonth() + 1) <= 9 ? "0" + (dateTimeToday.getMonth() + 1) : (dateTimeToday.getMonth() + 1);
-        var day = (dateTimeToday.getDay()) <= 9 ? "0" + (dateTimeToday.getDay()) : (dateTimeToday.getDay());
-        var dateTimeTodayString = dateTimeToday.getFullYear() + "-" + month + "-" + day;
-        var urlToGet = "http://api.football-data.org/alpha/soccerseasons/354/fixtures?timeFrameStart=" + dateTimeTodayString + "&timeFrameEnd=" + dateTimeTodayString;
-        var promiseFixtures = this.promise(urlToGet);
-        return promiseFixtures.then(function (body) {
-            var fixtures = JSON.parse(body);
-            var message = "";
-            if (fixtures.fixtures.length > 0) {
-                message = "MatchDay | Home Team | Away Team | Status \n";
-                for (var i = 0; i < fixtures.fixtures.length; i++) {
-                    var game = fixtures.fixtures[i];
-                    message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
-                }
-                return message;
-            }
-            else {
-                message = "No games for today. Go back to work.";
-            }
-            return message;
-        });
-    };
-    HubotFutbolWisdom.prototype.showLaLigaFixtures = function () {
-        var dateTimeToday = new Date();
-        var month = (dateTimeToday.getMonth() + 1) <= 9 ? "0" + (dateTimeToday.getMonth() + 1) : (dateTimeToday.getMonth() + 1);
-        var day = (dateTimeToday.getDate()) <= 9 ? "0" + (dateTimeToday.getDate()) : (dateTimeToday.getDate());
-        var dateTimeTodayString = dateTimeToday.getFullYear() + "-" + month + "-" + day;
-        var urlToGet = "http://api.football-data.org/alpha/soccerseasons/358/fixtures?timeFrameStart=" + dateTimeTodayString + "&timeFrameEnd=" + dateTimeTodayString;
-        var promiseFixtures = this.promise(urlToGet);
-        return promiseFixtures.then(function (body) {
-            var fixtures = JSON.parse(body);
-            var message = "";
-            if (fixtures.fixtures.length > 0) {
-                message = "MatchDay | Home Team | Away Team | Status \n";
-                for (var i = 0; i < fixtures.fixtures.length; i++) {
-                    var game = fixtures.fixtures[i];
-                    message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
+                    var length = 35;
+                    var homeTeamNameLength = game.homeTeamName.length;
+                    var awayTeamNameLength = game.awayTeamName.length;
+                    var newLengthHomeTeam = length - homeTeamNameLength;
+                    var newLengthAwayTeam = length - awayTeamNameLength;
+                    var matchday = (game.matchday <= 9) ? game.matchday + " " : game.matchday;
+                    var newStatusLength = 15 - game.status.length;
+                    message += "` " + matchday + "       ` | ` " + game.homeTeamName + " " + game.result.goalsHomeTeam + new Array(newLengthHomeTeam).join(' ') + "` | ` " + game.awayTeamName + " " + game.result.goalsAwayTeam + new Array(newLengthAwayTeam).join(' ') + "` | ` " + game.status + new Array(newStatusLength).join(' ') + " `\n";
                 }
                 return message;
             }

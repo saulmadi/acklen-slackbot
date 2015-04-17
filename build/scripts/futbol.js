@@ -1,6 +1,6 @@
 /// <reference path="../../typings/node/node.d.ts"/>
 // Description:
-//   Say Hi to Hubot.
+//   Soccer information
 //
 // Dependencies:
 //   None
@@ -9,8 +9,8 @@
 //   None
 //
 // Commands:
-//   hubot premier-league standings - "hello!"
-//   howdy - "wait... are you from Texas too?"
+//   hubot premier-league standings - table with teams standings"
+//   hubot premier-league fixtures - shows fixtures for current day
 //
 // Authors:
 //   Camilo Aguilar & Osman Hernandez
@@ -26,6 +26,11 @@ var Futbol = (function () {
         this.hubotAction = function (robot) {
             robot.respond(/premier-league standings/i, function (msg) {
                 _this.hubotFutbolWisdom.showPremierLeagueLeagueTable().then(function (table) {
+                    _this.messageSender.send(msg, table);
+                });
+            });
+            robot.respond(/la-liga standings/i, function (msg) {
+                _this.hubotFutbolWisdom.showLaLigaLeagueLeagueTable().then(function (table) {
                     _this.messageSender.send(msg, table);
                 });
             });

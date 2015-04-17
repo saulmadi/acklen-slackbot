@@ -31,6 +31,13 @@ class Futbol {
       			});
       	});
 
+      robot.respond(/la-liga standings/i, (msg: any) => {
+          this.hubotFutbolWisdom.showLaLigaLeagueLeagueTable()
+            .then((table) => {
+              this.messageSender.send(msg, table);
+            });
+        });
+
       	robot.respond(/premier-league fixtures/i, (msg: any) => {
       		this.hubotFutbolWisdom.showPremierLeagueFixtures()
       			.then((fixtures) => {

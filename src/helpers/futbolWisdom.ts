@@ -1,6 +1,7 @@
 export interface IIHubotFutbolWisdom {
 	showPremierLeagueLeagueTable() : any
 	showPremierLeagueFixtures() :any
+	showLaLigaLeagueLeagueTable() : any
 }
 
 export class HubotFutbolWisdom implements IIHubotFutbolWisdom {
@@ -22,7 +23,27 @@ export class HubotFutbolWisdom implements IIHubotFutbolWisdom {
 	      	}else {
 		      	for(var i = 0; i < leagueTable.standing.length; i++) {
 		        	team = leagueTable.standing[i];
-		        	message += team.position + " | " + team.teamName + " | " + team.points + "\n";
+		        	message += team.position + " | " + team.teamName + " | " + team.points + "pts\n";
+		      	}
+	      	}
+	      	return message;
+    	});
+	}
+
+	showLaLigaLeagueLeagueTable(): any{
+		var urlToGet = 'http://api.football-data.org/alpha/soccerseasons/358/leagueTable';
+		var promise = this.promise(urlToGet);
+		return promise.then((body) => {
+	      	var leagueTable = JSON.parse(body);
+	      	var message = "";
+	      	var team:any;
+
+	      	if(leagueTable.standing.length === 0) {
+	      		message = "No league table was found, get back to work!";
+	      	}else {
+		      	for(var i = 0; i < leagueTable.standing.length; i++) {
+		        	team = leagueTable.standing[i];
+		        	message += team.position + " | " + team.teamName + " | " + team.points + "pts\n";
 		      	}
 	      	}
 	      	return message;

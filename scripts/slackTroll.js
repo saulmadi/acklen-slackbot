@@ -1,6 +1,6 @@
 /// <reference path="../../typings/node/node.d.ts"/>
 // Description:
-//   Say Hi to Hubot.
+//   Troll the url sharers
 //
 // Dependencies:
 //   None
@@ -9,13 +9,9 @@
 //   None
 //
 // Commands:
-//   hubot premier-league standings - "hello!"
-//   howdy - "wait... are you from Texas too?"
-//
-// Authors:
-//   Camilo Aguilar & Osman Hernandez
-//   Tester:
-//      Carlos Fontecha
+//   hubot any url - meme of spongebob no one cares
+// Author:
+//   Osman Hernandez
 var SlackTroll = (function () {
     function SlackTroll(promise) {
         var _this = this;

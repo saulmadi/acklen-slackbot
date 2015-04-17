@@ -15,7 +15,26 @@ var HubotFutbolWisdom = (function () {
             else {
                 for (var i = 0; i < leagueTable.standing.length; i++) {
                     team = leagueTable.standing[i];
-                    message += team.position + " | " + team.teamName + " | " + team.points + "\n";
+                    message += team.position + " | " + team.teamName + " | " + team.points + "pts\n";
+                }
+            }
+            return message;
+        });
+    };
+    HubotFutbolWisdom.prototype.showLaLigaLeagueLeagueTable = function () {
+        var urlToGet = 'http://api.football-data.org/alpha/soccerseasons/358/leagueTable';
+        var promise = this.promise(urlToGet);
+        return promise.then(function (body) {
+            var leagueTable = JSON.parse(body);
+            var message = "";
+            var team;
+            if (leagueTable.standing.length === 0) {
+                message = "No league table was found, get back to work!";
+            }
+            else {
+                for (var i = 0; i < leagueTable.standing.length; i++) {
+                    team = leagueTable.standing[i];
+                    message += team.position + " | " + team.teamName + " | " + team.points + "pts\n";
                 }
             }
             return message;

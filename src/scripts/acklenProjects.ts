@@ -12,6 +12,12 @@
 //   Rene Rosa <realpasro09@hotmail.com>
 //   Frank Rodriguez <frankhn0801@gmail.com>
 
+//module Acklen {
+//
+//  export class Project{
+//    constructor ()
+//  }
+//}
 function AcklenProjects(robot: any) {
 
   var fs: any = require('fs');

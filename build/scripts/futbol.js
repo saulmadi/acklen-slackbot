@@ -42,6 +42,11 @@ var Futbol = (function () {
                     _this.messageSender.send(msg, fixtures);
                 });
             });
+            robot.respond(/real-madrid fixtures/i, function (msg) {
+                _this.hubotFutbolWisdom.showTeamFixtures(86).then(function (fixtures) {
+                    _this.messageSender.send(msg, fixtures);
+                });
+            });
             robot.respond(/la-liga fixtures/i, function (msg) {
                 _this.hubotFutbolWisdom.showLeagueFixtures(358).then(function (fixtures) {
                     _this.messageSender.send(msg, fixtures);

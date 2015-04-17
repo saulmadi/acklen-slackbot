@@ -49,6 +49,13 @@ class Futbol {
       			});
       	});
 
+        robot.respond(/real-madrid fixtures/i, (msg: any) => {
+          this.hubotFutbolWisdom.showTeamFixtures(86)
+            .then((fixtures) => {
+              this.messageSender.send(msg, fixtures);
+            });
+        });
+
         robot.respond(/la-liga fixtures/i, (msg: any) => {
           this.hubotFutbolWisdom.showLeagueFixtures(358)
             .then((fixtures) => {

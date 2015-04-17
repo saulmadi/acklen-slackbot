@@ -50,12 +50,6 @@ class Futbol {
 				});
 		});
 
-		robot.respond(/serie-a standings/i, (msg: any) => {
-			this.hubotFutbolWisdom.showLeagueTable(380)
-				.then((table) => {
-					this.messageSender.send(msg, table);
-				});
-		});
 
 		//fixtures
 		robot.respond(/bundes-liga fixtures/i, (msg: any) => {
@@ -72,12 +66,6 @@ class Futbol {
 				});
 		});
 
-		robot.respond(/serie-a fixtures/i, (msg: any) => {
-			this.hubotFutbolWisdom.showLeagueFixtures(380)
-				.then((fixtures) => {
-					this.messageSender.send(msg, fixtures);
-				});
-		});
 
 		robot.respond(/la-liga fixtures/i, (msg: any) => {
 			this.hubotFutbolWisdom.showLeagueFixtures(358)

@@ -18,8 +18,6 @@ export class HubotFutbolWisdom implements IIHubotFutbolWisdom {
 		helpMessage += "la-liga fixtures | Return todays date fixtures for Spains's La Liga \n";
 		helpMessage += "bundes-liga standings | Return the actual season standing for Germany's Bundesliga \n";
 		helpMessage += "bundes-liga fixtures | Return todays date fixtures for Germany's Bundesliga \n";
-		helpMessage += "serie-a standings | Return the actual season standing for Italias's Serie-A \n";
-		helpMessage += "serie-a fixtures | Return todays date fixtures for Italias's Serie-A \n";
 		helpMessage += "real-madrid fixtures | Return todays date fixtures for Real Madrid \n";
 
 		return helpMessage;

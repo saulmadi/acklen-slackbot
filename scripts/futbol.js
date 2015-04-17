@@ -43,11 +43,6 @@ var Futbol = (function () {
                     _this.messageSender.send(msg, table);
                 });
             });
-            robot.respond(/serie-a standings/i, function (msg) {
-                _this.hubotFutbolWisdom.showLeagueTable(380).then(function (table) {
-                    _this.messageSender.send(msg, table);
-                });
-            });
             //fixtures
             robot.respond(/bundes-liga fixtures/i, function (msg) {
                 _this.hubotFutbolWisdom.showLeagueFixtures(351).then(function (fixtures) {
@@ -56,11 +51,6 @@ var Futbol = (function () {
             });
             robot.respond(/premier-league fixtures/i, function (msg) {
                 _this.hubotFutbolWisdom.showLeagueFixtures(354).then(function (fixtures) {
-                    _this.messageSender.send(msg, fixtures);
-                });
-            });
-            robot.respond(/serie-a fixtures/i, function (msg) {
-                _this.hubotFutbolWisdom.showLeagueFixtures(380).then(function (fixtures) {
                     _this.messageSender.send(msg, fixtures);
                 });
             });

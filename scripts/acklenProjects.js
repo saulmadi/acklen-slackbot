@@ -1,4 +1,5 @@
 /// <reference path="../../typings/node/node.d.ts"/>
+/// <reference path="../../typings/underscore/underscore.d.ts"/>
 // Description
 //  A Hubot script written in TypeScript to show information about acklen avenue project
 //
@@ -10,10 +11,15 @@
 // Author:
 //   Rene Rosa <realpasro09@hotmail.com>
 //   Frank Rodriguez <frankhn0801@gmail.com>
+//module Acklen {
+//
+//  export class Project{
+//    constructor ()
+//  }
+//}
 function AcklenProjects(robot) {
     var fs = require('fs');
     var projects = JSON.parse(fs.readFileSync('project.json', 'utf8'));
-    var _ = require('underscore');
     robot.respond(/create notes for (.*)/i, function (msg) {
         var projectName = msg.match[1];
         var project = _.filter(projects, function (p) {
@@ -80,7 +86,7 @@ function AcklenProjects(robot) {
             msg.send(response);
         }
     });
-    robot.respond(/edit (.*) in (.*) notes with -> (.*)/i, function (msg) {
+    robot.respond(/edit (.*) in (.*) with -> (.*)/i, function (msg) {
         var property = msg.match[1];
         var projectName = msg.match[2];
         var newValue = msg.match[3];

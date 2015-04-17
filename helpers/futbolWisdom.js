@@ -46,10 +46,14 @@ var HubotFutbolWisdom = (function () {
                 message = "No league table was found, get back to work!";
             }
             else {
-                message = "Position | Team Name | Points \n";
+                message = "` Position ` | ` Team Name                                         ` | ` Points  ` \n";
                 for (var i = 0; i < leagueTable.standing.length; i++) {
                     team = leagueTable.standing[i];
-                    message += team.position + " | " + team.teamName + " | " + team.points + "pts\n";
+                    var length = 50;
+                    var teamNameLength = team.teamName.length;
+                    var newLength = length - teamNameLength;
+                    var teamPosition = (team.position <= 9) ? team.position + " " : team.position;
+                    message += "` " + teamPosition + "       ` | ` " + team.teamName + new Array(newLength).join(' ') + " ` | ` " + team.points + "pts   `\n";
                 }
             }
             return message;

@@ -1,6 +1,6 @@
 /// <reference path="../../typings/node/node.d.ts"/>
 // Description:
-//   Say Hi to Hubot.
+//   Troll the url sharers
 //
 // Dependencies:
 //   None
@@ -9,19 +9,15 @@
 //   None
 //
 // Commands:
-//   hubot premier-league standings - "hello!"
-//   howdy - "wait... are you from Texas too?"
-//
-// Authors:
-//   Camilo Aguilar & Osman Hernandez
-//   Tester:
-//      Carlos Fontecha
+//   hubot any url - meme of spongebob no one cares
+// Author:
+//   Osman Hernandez
 var SlackTroll = (function () {
     function SlackTroll(promise) {
         var _this = this;
         this.promise = promise;
         this.trollAction = function (robot) {
-            robot.respond(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i, function (msg) {
+            robot.hear(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i, function (msg) {
                 var promise = _this.promise("http://version1.api.memegenerator.net/Instance_Create?username=matador&password=matador&languageCode=en&generatorID=45&imageID=39519&text0=Nobody&text1=cares");
                 promise.then(function (body) {
                     var memeData = JSON.parse(body);

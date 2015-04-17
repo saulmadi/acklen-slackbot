@@ -17,7 +17,7 @@ var SlackTroll = (function () {
         var _this = this;
         this.promise = promise;
         this.trollAction = function (robot) {
-            robot.respond(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i, function (msg) {
+            robot.hear(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i, function (msg) {
                 var promise = _this.promise("http://version1.api.memegenerator.net/Instance_Create?username=matador&password=matador&languageCode=en&generatorID=45&imageID=39519&text0=Nobody&text1=cares");
                 promise.then(function (body) {
                     var memeData = JSON.parse(body);

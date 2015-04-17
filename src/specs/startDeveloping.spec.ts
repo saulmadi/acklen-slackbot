@@ -24,7 +24,7 @@ describe("The Start Develop hubot script",()=>{
     
     it("should respond respond with the card name and branch name", () => {
     
-        var cardName = "alberto"
+        var cardName = "alberto";
         var resp = new FakeResponse();
         this.robot.overhears("Start Developing "+ cardName,resp)
         

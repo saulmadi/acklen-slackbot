@@ -45,7 +45,6 @@ module.exports = (robot) ->
 
       db.authenticate user, pass, (err, success) ->
         return error err if err
-
         console.log "Successfully authenticated with mongo..."
 
         collection = new Collection client, 'SlackLogger'

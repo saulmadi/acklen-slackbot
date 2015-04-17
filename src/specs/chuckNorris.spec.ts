@@ -16,7 +16,7 @@ import rob = require('./fakes/FakeRobot');
 var FakeRobot = rob.FakeRobot;
 import res = require('./fakes/FakeResponse');
 var FakeResponse = res.FakeResponse;
-/*
+
 describe("The Chuck Norris Hubot Script (integration)", () => {
   
   beforeEach(() => {
@@ -63,4 +63,4 @@ describe("The Chuck Norris Hubot Script (integration)", () => {
 
   
 });
-*/
+

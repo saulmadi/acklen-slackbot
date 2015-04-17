@@ -8,6 +8,10 @@ var HubotFutbolWisdom = (function () {
         helpMessage += "premier-league fixtures | Return todays date fixtures for England's Premier League \n";
         helpMessage += "la-liga standings | Return the actual season standing for Spain's La Liga \n";
         helpMessage += "la-liga fixtures | Return todays date fixtures for Spains's La Liga \n";
+        helpMessage += "bundes-liga standings | Return the actual season standing for Germany's Bundesliga \n";
+        helpMessage += "bundes-liga fixtures | Return todays date fixtures for Germany's Bundesliga \n";
+        helpMessage += "serie-a standings | Return the actual season standing for Italias's Serie-A \n";
+        helpMessage += "serie-a fixtures | Return todays date fixtures for Italias's Serie-A \n";
         helpMessage += "real-madrid fixtures | Return todays date fixtures for Real Madrid \n";
         return helpMessage;
     };
@@ -25,7 +29,14 @@ var HubotFutbolWisdom = (function () {
                 message = "MatchDay | Home Team | Away Team | Status \n";
                 for (var i = 0; i < fixtures.fixtures.length; i++) {
                     var game = fixtures.fixtures[i];
-                    message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
+                    var length = 35;
+                    var homeTeamNameLength = game.homeTeamName.length;
+                    var awayTeamNameLength = game.awayTeamName.length;
+                    var newLengthHomeTeam = length - homeTeamNameLength;
+                    var newLengthAwayTeam = length - awayTeamNameLength;
+                    var matchday = (game.matchday <= 9) ? game.matchday + " " : game.matchday;
+                    var newStatusLength = 15 - game.status.length;
+                    message += "` " + matchday + "       ` | ` " + game.homeTeamName + " " + game.result.goalsHomeTeam + new Array(newLengthHomeTeam).join(' ') + "` | ` " + game.awayTeamName + " " + game.result.goalsAwayTeam + new Array(newLengthAwayTeam).join(' ') + "` | ` " + game.status + new Array(newStatusLength).join(' ') + " `\n";
                 }
                 return message;
             }

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for helpers\trelloService.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">helpers\trelloService.js</span></h1>
+    <h2>
+        Statements: <span class="metric">46.51% <small>(20 / 43)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">33.33% <small>(3 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">46.51% <small>(20 / 43)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">helpers/</a> &#187; trelloService.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/// &lt;reference path="../../typings/node/node.d.ts"/&gt;
+var _ = require("underscore");
+var TrelloService = (function () {
+    function TrelloService(httpClient) {
+        this.httpClient = httpClient;
+        this.boardId = "55314f6bf10520a36ce9250f";
+        this.backlogId = "55314f7433029f1cf32811d6";
+        this.onDeckId = "55314f87531e125bd4569ef0";
+        this.inDev = "55314fc1b6dd68995271f7ab";
+        this.readyForCodeReview = "55314fad4752513188e28090";
+        this.readyForTesting = "55314ff25c4112b46c0eb65f";
+        this.key = "762756329d379eab41f982807ca3b6a4";
+        this.token = "c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c";
+    }
+    TrelloService.prototype.moveCard = function (cardName, listName) {
+        var _this = this;
+        console.log("inicia moviendo");
+        var cardsInBacklogPromise = this.httpClient("https://api.trello.com/1/boards/55314f6bf10520a36ce9250f/cards?key=762756329d379eab41f982807ca3b6a4&amp;token=c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c");
+        cardsInBacklogPromise.then(<span class="fstat-no" title="function not covered" >function (body) {</span>
+<span class="cstat-no" title="statement not covered" >            console.log("trajo las cards:" + body);</span>
+<span class="cstat-no" title="statement not covered" >            console.log("======================");</span>
+<span class="cstat-no" title="statement not covered" >            var card = _.find(JSON.parse(body), <span class="fstat-no" title="function not covered" >function (item) {</span></span>
+<span class="cstat-no" title="statement not covered" >                console.log(item);</span>
+<span class="cstat-no" title="statement not covered" >                console.log(item.name + " ====" + cardName);</span>
+<span class="cstat-no" title="statement not covered" >                return item.name === cardName;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            console.log("encontro la card");</span>
+<span class="cstat-no" title="statement not covered" >            var listid = _this.getListId(listName);</span>
+<span class="cstat-no" title="statement not covered" >            var options = {</span>
+                uri: "https://api.trello.com/1/cards/" + card.id + "?idList=" + listid + "&amp;key=762756329d379eab41f982807ca3b6a4&amp;token=c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c",
+                method: 'PUT'
+            };
+<span class="cstat-no" title="statement not covered" >            _this.httpClient(options).then(<span class="fstat-no" title="function not covered" >function (body) {</span></span>
+<span class="cstat-no" title="statement not covered" >                return { url: card.shortUrl, name: card.name };</span>
+            }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error("Cant move the card: " + error);</span>
+            });
+        }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Cant move the card: " + error);</span>
+        });
+    };
+    TrelloService.prototype.getListId = <span class="fstat-no" title="function not covered" >function (listName) {</span>
+<span class="cstat-no" title="statement not covered" >        if (listName.toLowerCase() === "on deck")</span>
+<span class="cstat-no" title="statement not covered" >            return this.onDeckId;</span>
+<span class="cstat-no" title="statement not covered" >        if (listName.toLowerCase() === "backlog")</span>
+<span class="cstat-no" title="statement not covered" >            return this.backlogId;</span>
+<span class="cstat-no" title="statement not covered" >        if (listName.toLowerCase() === "in dev")</span>
+<span class="cstat-no" title="statement not covered" >            return this.inDev;</span>
+<span class="cstat-no" title="statement not covered" >        if (listName.toLowerCase() === "ready for code review")</span>
+<span class="cstat-no" title="statement not covered" >            return this.readyForCodeReview;</span>
+<span class="cstat-no" title="statement not covered" >        if (listName.toLowerCase() === "ready for testing")</span>
+<span class="cstat-no" title="statement not covered" >            return this.readyForTesting;</span>
+    };
+    return TrelloService;
+})();
+exports.TrelloService = TrelloService;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 17 2015 14:44:15 GMT-0600 (Hora estándar, América Central)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

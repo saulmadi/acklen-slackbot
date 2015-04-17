@@ -23,15 +23,12 @@ export class TrelloService implements ITrelloService{
     
     moveCard(cardName: string, listName: string) :any {
        
-        console.log("inicia moviendo");
+        
         
         var cardsInBacklogPromise =  this.httpClient("https://api.trello.com/1/boards/55314f6bf10520a36ce9250f/cards?key=762756329d379eab41f982807ca3b6a4&token=c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c");
         
         cardsInBacklogPromise.then((body)=>{
                 
-              console.log("trajo las cards:" + body );
-            
-              console.log("======================");
             
             var card = _.find(JSON.parse(body),(item) => {
                  console.log(item);

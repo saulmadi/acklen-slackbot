@@ -19,7 +19,7 @@ describe("The Start Develop hubot script", function () {
         _this.robot = new FakeRobot();
     });
     it("should respond respond with the card name and branch name", function () {
-        var cardName = "hola";
+        var cardName = "alberto";
         var resp = new FakeResponse();
         _this.robot.overhears("Start Developing " + cardName, resp);
         StartDevelopment(_this.robot);

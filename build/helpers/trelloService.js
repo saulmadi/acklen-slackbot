@@ -14,17 +14,11 @@ var TrelloService = (function () {
     }
     TrelloService.prototype.moveCard = function (cardName, listName) {
         var _this = this;
-        console.log("inicia moviendo");
         var cardsInBacklogPromise = this.httpClient("https://api.trello.com/1/boards/55314f6bf10520a36ce9250f/cards?key=762756329d379eab41f982807ca3b6a4&token=c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c");
         cardsInBacklogPromise.then(function (body) {
-            console.log("trajo las cards:" + body);
-            console.log("======================");
             var card = _.find(JSON.parse(body), function (item) {
-                console.log(item);
-                console.log(item.name + " ====" + cardName);
                 return item.name === cardName;
             });
-            console.log("encontro la card");
             var listid = _this.getListId(listName);
             var options = {
                 uri: "https://api.trello.com/1/cards/" + card.id + "?idList=" + listid + "&key=762756329d379eab41f982807ca3b6a4&token=c6f88e572ad30472b9b29b74801a5b8f32b74cb4dae112dda505097a14870f1c",

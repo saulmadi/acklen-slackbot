@@ -31,15 +31,15 @@ export class TrelloService implements ITrelloService{
                 
             
             var card = _.find(JSON.parse(body),(item) => {
-                 console.log(item);
                 
-                console.log(item.name +" ===="+ cardName);
+                
+                
                     return item.name === cardName;
                 
                 
                 });
             
-              console.log("encontro la card");
+             
             
             
             var listid = this.getListId(listName);

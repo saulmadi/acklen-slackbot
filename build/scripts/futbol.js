@@ -12,11 +12,11 @@
 //   hubot hello - "hello!"
 //   howdy - "wait... are you from Texas too?"
 //
-// Author:
-//   Byron Sommardahl
+// Authors:
+//   Camilo Aguilar & Osman Hernandez
 var httpClient = require("request-promise");
 function Futbol(robot) {
-    robot.respond(/premier-league standings/, function (msg) {
+    robot.respond(/premier-league standings/i, function (msg) {
         var urlToGet = "http://api.football-data.org/alpha/soccerseasons/354/leagueTable";
         var promise = httpClient(urlToGet);
         return promise.then(function (body) {
@@ -29,7 +29,7 @@ function Futbol(robot) {
             msg.reply(result);
         });
     });
-    robot.respond(/premier-league fixtures/, function (msg) {
+    robot.respond(/premier-league fixtures/i, function (msg) {
         var dateTimeToday = new Date();
         var month = (dateTimeToday.getMonth() + 1) <= 9 ? "0" + (dateTimeToday.getMonth() + 1) : (dateTimeToday.getMonth() + 1);
         var day = (dateTimeToday.getDay()) <= 9 ? "0" + (dateTimeToday.getDay()) : (dateTimeToday.getDay());
@@ -51,9 +51,6 @@ function Futbol(robot) {
                 msg.reply("No games for today. Go back to work.");
             }
         });
-    });
-    robot.hear(/howdy2/, function (msg) {
-        msg.send("wait... are you from Texas too?");
     });
 }
 module.exports = Futbol;

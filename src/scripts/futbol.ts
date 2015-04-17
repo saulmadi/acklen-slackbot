@@ -1,6 +1,6 @@
 /// <reference path="../../typings/node/node.d.ts"/>
 // Description:
-//   Say Hi to Hubot.
+//   Soccer information
 //
 // Dependencies:
 //   None
@@ -9,8 +9,8 @@
 //   None
 //
 // Commands:
-//   hubot premier-league standings - "hello!"
-//   howdy - "wait... are you from Texas too?"
+//   hubot premier-league standings - table with teams standings"
+//   hubot premier-league fixtures - shows fixtures for current day
 //
 // Authors:
 //   Camilo Aguilar & Osman Hernandez
@@ -23,7 +23,7 @@ import fw = require("../helpers/futbolWisdom");
 class Futbol {
 	constructor(private messageSender: ms.ISendMessages, private hubotFutbolWisdom: fw.IIHubotFutbolWisdom) {}
 
-  	hubotAction = (robot:any) => {
+  	hubotAction = (robot: any) => {
     	robot.respond(/premier-league standings/i, (msg: any) => {
       		this.hubotFutbolWisdom.showPremierLeagueLeagueTable()
       			.then((table) => {

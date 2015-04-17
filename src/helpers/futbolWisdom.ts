@@ -88,9 +88,12 @@ export class HubotFutbolWisdom implements IIHubotFutbolWisdom {
       		var fixtures = JSON.parse(body);
       		var message = "";
       		if (fixtures.fixtures.length > 0){
-        		message = "MatchDay | Home Team | Away Team | Status \n";
+        		message = "` MatchDay ` | ` Home Team                    ` | ` Away Team                     ` | ` Status ` \n";
         		for(var i = 0; i<fixtures.fixtures.length;i++){
           			var game = fixtures.fixtures[i];
+          			var length = 50;
+          			var homeTeamNameLength = game.homeTeamName.length;
+          			var awayTeamNameLength = game.awayTeamName.length;
           			message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
         		}
         		return message;

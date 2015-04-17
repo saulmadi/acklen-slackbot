@@ -70,7 +70,7 @@ var HubotFutbolWisdom = (function () {
             var fixtures = JSON.parse(body);
             var message = "";
             if (fixtures.fixtures.length > 0) {
-                message = "MatchDay | Home Team | Away Team | Status \n";
+                message = "` MatchDay ` | ` Home Team                    ` | ` Away Team                     ` | ` Status ` \n";
                 for (var i = 0; i < fixtures.fixtures.length; i++) {
                     var game = fixtures.fixtures[i];
                     message += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";

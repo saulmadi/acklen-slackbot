@@ -9,48 +9,37 @@
 //   None
 //
 // Commands:
-//   hubot hello - "hello!"
+//   hubot premier-league standings - "hello!"
 //   howdy - "wait... are you from Texas too?"
 //
 // Authors:
 //   Camilo Aguilar & Osman Hernandez
+//   Tester:
+//      Carlos Fontecha
+var ms = require("../helpers/messageSender");
+var fw = require("../helpers/futbolWisdom");
+var Futbol = (function () {
+    function Futbol(messageSender, hubotFutbolWisdom) {
+        var _this = this;
+        this.messageSender = messageSender;
+        this.hubotFutbolWisdom = hubotFutbolWisdom;
+        this.hubotAction = function (robot) {
+            robot.respond(/premier-league standings/i, function (msg) {
+                _this.hubotFutbolWisdom.showPremierLeagueLeagueTable().then(function (table) {
+                    _this.messageSender.send(msg, table);
+                });
+            });
+            robot.respond(/premier-league fixtures/i, function (msg) {
+                _this.hubotFutbolWisdom.showPremierLeagueFixtures().then(function (fixtures) {
+                    _this.messageSender.send(msg, fixtures);
+                });
+            });
+        };
+    }
+    return Futbol;
+})();
 var httpClient = require("request-promise");
-function Futbol(robot) {
-    robot.respond(/premier-league standings/i, function (msg) {
-        var urlToGet = "http://api.football-data.org/alpha/soccerseasons/354/leagueTable";
-        var promise = httpClient(urlToGet);
-        return promise.then(function (body) {
-            var leagueTable = JSON.parse(body);
-            var result = "";
-            for (var i = 0; i < leagueTable.standing.length; i++) {
-                var team = leagueTable.standing[i];
-                result += team.position + " | " + team.teamName + " | " + team.points + "\n";
-            }
-            msg.reply(result);
-        });
-    });
-    robot.respond(/premier-league fixtures/i, function (msg) {
-        var dateTimeToday = new Date();
-        var month = (dateTimeToday.getMonth() + 1) <= 9 ? "0" + (dateTimeToday.getMonth() + 1) : (dateTimeToday.getMonth() + 1);
-        var day = (dateTimeToday.getDay()) <= 9 ? "0" + (dateTimeToday.getDay()) : (dateTimeToday.getDay());
-        var dateTimeTodayString = dateTimeToday.getFullYear() + "-" + month + "-" + day;
-        var urlToGet = "http://api.football-data.org/alpha/soccerseasons/354/fixtures?timeFrameStart=" + dateTimeTodayString + "&timeFrameEnd=" + dateTimeTodayString;
-        console.log(urlToGet);
-        var promiseFixtures = httpClient(urlToGet);
-        return promiseFixtures.then(function (body) {
-            var fixtures = JSON.parse(body);
-            if (fixtures.fixtures.length > 0) {
-                var result = "MatchDay | Home Team | Away Team | Status \n";
-                for (var i = 0; i < fixtures.fixtures.length; i++) {
-                    var game = fixtures.fixtures[i];
-                    result += game.matchday + " | " + game.homeTeamName + " " + game.result.goalsHomeTeam + " | " + game.awayTeamName + " " + game.result.goalsAwayTeam + " | " + game.status + "\n";
-                }
-                msg.reply(result);
-            }
-            else {
-                msg.reply("No games for today. Go back to work.");
-            }
-        });
-    });
-}
-module.exports = Futbol;
+var MessageSender = ms.MessageSender;
+var HubotFutbolWisdom = fw.HubotFutbolWisdom;
+var fn = new Futbol(new MessageSender(), new HubotFutbolWisdom(httpClient)).hubotAction;
+module.exports = fn;

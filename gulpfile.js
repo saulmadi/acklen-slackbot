@@ -34,12 +34,12 @@ gulp.task('specs', ['build'], function(cb){
 	console.log("Running specs to make sure nothing is broken.")
 	var mocha = require('gulp-mocha');	
 	gulp.src([buildFolder+"/**/*.js", "!"+buildFolder+"/specs/**/*.js"])
-		.pipe(istanbul())
+		.pipe(istanbul({includeUntested: true}))
 		.pipe(istanbul.hookRequire())
 		.on('finish', function () {
-	      gulp.src([buildFolder+'/specs/**/*.js'])
+	      gulp.src([buildFolder+'/specs/**/*.js','!'+buildFolder+'/specs/fakes/**/*.js'])
 	      	.pipe(debug())
-	        .pipe(mocha())
+	      	.pipe(mocha())
 	        .pipe(istanbul.writeReports({reporters: ['text-summary','html'], reportOpts: { dir: "coverage"}}))
 	        .on('end', cb);
 	    }); 

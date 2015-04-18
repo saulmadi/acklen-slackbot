@@ -1,4 +1,5 @@
 var Parse = require('parse').Parse;
+var moment = require('moment');
 var HubotParseDb = (function () {
     function HubotParseDb() {
         Parse.initialize("wQFYcalrOw3YwIQoQ1BcgiMFhGE0tL4P24uKXFDm", "vdPFwegmiQvcnGIrFe09eTCI9oOyxm5buocTBu03");
@@ -42,7 +43,7 @@ var HubotParseDb = (function () {
                     var abscenceEndTime = _this.addMinutes(abscenceStartTime, result[0].attributes.Time);
                     if (today > abscenceStartTime && today < abscenceEndTime) {
                         var date = new Date(abscenceEndTime.toString());
-                        messageSender.send(result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
+                        messageSender.send(result[0].attributes.User + " is abscent, will be back around " + moment(date).format('h:mm A'));
                     }
                 }
                 else if (format == 'hour') {
@@ -51,7 +52,7 @@ var HubotParseDb = (function () {
                     var abscenceEndTime = _this.addHours(abscenceStartTime, result[0].attributes.Time);
                     if (today > abscenceStartTime && today < abscenceEndTime) {
                         var date = new Date(abscenceEndTime.toString());
-                        messageSender.send(result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
+                        messageSender.send(result[0].attributes.User + " is abscent, will be back around " + moment(date).format('h:mm A'));
                     }
                 }
                 else if (format == 'day') {

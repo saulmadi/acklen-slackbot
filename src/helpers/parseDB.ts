@@ -1,4 +1,5 @@
 var Parse = require('parse').Parse;
+var moment = require('moment');
 
 export interface IIHubotParseDb {
 	saveAbscence(command:any): any
@@ -57,7 +58,7 @@ export class HubotParseDb implements IIHubotParseDb {
                    if(today> abscenceStartTime && today<abscenceEndTime)
                    {
                        var date = new Date(abscenceEndTime.toString());
-                       messageSender.send( result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
+                       messageSender.send( result[0].attributes.User + " is abscent, will be back around " + moment(date).format('h:mm A'));
                    }
 
                }else if(format == 'hour')
@@ -69,7 +70,7 @@ export class HubotParseDb implements IIHubotParseDb {
                    if(today> abscenceStartTime && today<abscenceEndTime)
                    {
                        var date = new Date(abscenceEndTime.toString());
-                       messageSender.send(result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
+                       messageSender.send(result[0].attributes.User + " is abscent, will be back around " + moment(date).format('h:mm A'));
                    }
 
                }else if(format == 'day')

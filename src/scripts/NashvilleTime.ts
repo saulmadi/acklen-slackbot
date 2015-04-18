@@ -1,16 +1,15 @@
 /// <reference path="../../typings/node/node.d.ts"/>
 // Description
-//  An example Hubot script written in TypeScript
+//  Mention anything about time zone, nashville time, or honduran time and you get taunted.
 //
 // Configuration:
 //   None
 //
 // Commands:
-//   hubot hello - responds 'Howdy!'
+//   time zone|Nashville Time|Honduran time|Honduras time|gringo time
 //
 // Author:
 //   Byron Sommardahl <byron@acklenavenue.com>
-
 function NashvilleTime(robot: any) {
 
 	var taunts = [

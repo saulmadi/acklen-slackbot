@@ -3,7 +3,8 @@ var moment = require('moment');
 
 export interface IIHubotParseDb {
 	saveAbscence(command:any): any
-	checkIsAbscent(messageSender:any, user:any): any		
+	checkIsAbscent(messageSender:any, user:any): any
+    userIsBack(user:any) : any
 }
 
 export class HubotParseDb implements IIHubotParseDb {
@@ -85,6 +86,43 @@ export class HubotParseDb implements IIHubotParseDb {
            }
        });
 	}
+    
+    
+    userIsBack(user:any) : any
+    {
+           var today = new Date();
+           var tommorrow = new Date();
+
+           today.setHours(0,0,0,0);        
+           tommorrow.setDate(today.getDate()+1);
+           tommorrow.setHours(0,0,0,0);
+
+           var ParseClass = Parse.Object.extend("Users");
+           var query = new Parse.Query(ParseClass);
+           query.equalTo("User", user);
+           query.greaterThan("createdAt", today);
+           query.lessThan("createdAt", tommorrow);
+           query.descending("createdAt");
+           query.find({
+               success: (query:any) => {
+                   var objectId = query[0].id;
+                   ParseClass = Parse.Object.extend("Users");
+                   var update = new Parse.Query(ParseClass);
+                   update.get(objectId, {
+                       success: (update:any)=> {
+                           update.set("Time", 0); 
+                           update.save();    
+                       },
+                       error: (object:any, error:any) => {
+                       }
+                   }); 
+               },
+               error: (object:any, error:any) => {
+               }
+
+           });
+    }
+    
     
     addHours(date, hour): any{
        return new Date(date.getTime() + hour*60*60*1000);

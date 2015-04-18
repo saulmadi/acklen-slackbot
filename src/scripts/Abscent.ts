@@ -64,6 +64,12 @@ class Abscent {
                     this.HubotParseDb.checkIsAbscent(msg, user);
                 }
             });
+        
+        robot.hear(/\b(Im back|back)\b/g,
+            (msg: any) => {
+                var user = msg.message.user;
+                this.HubotParseDb.userIsBack(user.name);
+            });        
     }
 }
 

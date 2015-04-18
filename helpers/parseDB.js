@@ -63,6 +63,36 @@ var HubotParseDb = (function () {
             }
         });
     };
+    HubotParseDb.prototype.userIsBack = function (user) {
+        var today = new Date();
+        var tommorrow = new Date();
+        today.setHours(0, 0, 0, 0);
+        tommorrow.setDate(today.getDate() + 1);
+        tommorrow.setHours(0, 0, 0, 0);
+        var ParseClass = Parse.Object.extend("Users");
+        var query = new Parse.Query(ParseClass);
+        query.equalTo("User", user);
+        query.greaterThan("createdAt", today);
+        query.lessThan("createdAt", tommorrow);
+        query.descending("createdAt");
+        query.find({
+            success: function (query) {
+                var objectId = query[0].id;
+                ParseClass = Parse.Object.extend("Users");
+                var update = new Parse.Query(ParseClass);
+                update.get(objectId, {
+                    success: function (update) {
+                        update.set("Time", 0);
+                        update.save();
+                    },
+                    error: function (object, error) {
+                    }
+                });
+            },
+            error: function (object, error) {
+            }
+        });
+    };
     HubotParseDb.prototype.addHours = function (date, hour) {
         return new Date(date.getTime() + hour * 60 * 60 * 1000);
     };

@@ -44,6 +44,10 @@ var Abscent = (function () {
                     _this.HubotParseDb.checkIsAbscent(msg, user);
                 }
             });
+            robot.hear(/\b(Im back|back)\b/g, function (msg) {
+                var user = msg.message.user;
+                _this.HubotParseDb.userIsBack(user.name);
+            });
         };
         this.regex = new RegExp('\\b(' + this.commands.join('|') + ')\\s+(' + this.adjectives.join('|') + ')\\s+([0-9]+)\\s+(' + this.format.join('|') + ')\\b', 'i');
     }

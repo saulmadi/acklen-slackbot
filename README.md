@@ -1,4 +1,4 @@
-#Hubot+Typescript
+#Hubot+Typescript 
 
 ###Why? 
 Because TypeScript is the next big thing. Also because hubot scripts are powerful and fun. Why NOT is the better question?
@@ -14,7 +14,7 @@ Yes, Hubot is written in coffeescript. And, normally, hubot scripts are also wri
 - Gulp `npm install -g gulp`
 
 ###You need to install all the project-specific node packages:
-- Clone this repo and navigate to the project folder
+- Clone this repo and navigate to the project folder 
 - `npm install`
 
 ###Test the hubot

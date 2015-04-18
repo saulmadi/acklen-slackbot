@@ -35,6 +35,22 @@ var GithubServices = (function () {
             });
         });
     };
+    GithubServices.prototype.createPullRequest = function (title, head, base, body) {
+        var options = {
+            uri: "https://api.github.com/repos/saulmadi/acklen-slackbot/pulls?access_token=4dcf4b3298bc38faa8bc348ae93fcb4f62aa549b",
+            method: "POST",
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
+            },
+            body: JSON.stringify({
+                "title": title,
+                "body": body,
+                "head": head,
+                "base": base
+            })
+        };
+        return this.httpClient(options);
+    };
     return GithubServices;
 })();
 exports.GithubServices = GithubServices;

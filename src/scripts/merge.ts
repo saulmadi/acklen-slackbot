@@ -12,7 +12,9 @@ class Merge {
 			var cardName = msg.match[1]
 			     
                 var values =  this.tresloService.moveCard(cardName, "ready for testing");
-                    
+            
+            this.githubService.merge(cardName);
+            
              this.messageSender.send(msg, cardName +"is in ready for testing");
             
             

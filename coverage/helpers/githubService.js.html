@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header low">
     <h1>Code coverage report for <span class="entity">helpers\githubService.js</span></h1>
     <h2>
-        Statements: <span class="metric">60% <small>(12 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">42.86% <small>(3 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">60% <small>(12 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">41.94% <small>(13 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">30% <small>(3 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">41.94% <small>(13 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">helpers/</a> &#187; githubService.js</div>
@@ -81,7 +81,40 @@
 54
 55
 56
-57</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -133,6 +166,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,6 +256,39 @@ var GithubServices = (function () {
         };
 <span class="cstat-no" title="statement not covered" >        return this.httpClient(options);</span>
     };
+    GithubServices.prototype.merge = <span class="fstat-no" title="function not covered" >function (branchName) {</span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        var getOptions = {</span>
+            uri: "https://api.github.com/repos/saulmadi/acklen-slackbot/pulls?client_id=f877c09dc922492643ae&amp;client_secret=d9725b5f686127401e0a471eafc48efbe2f03751",
+            method: "GET",
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        var pulls = this.httpClient(getOptions);</span>
+<span class="cstat-no" title="statement not covered" >        pulls.then(<span class="fstat-no" title="function not covered" >function (body) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var pull = _.find(JSON.parse(body), <span class="fstat-no" title="function not covered" >function (item) {</span></span>
+<span class="cstat-no" title="statement not covered" >                return item.title.indexOf(branchName) &gt; -1 &amp;&amp; item.state === "open";</span>
+            });
+<span class="cstat-no" title="statement not covered" >            if (pull) {</span>
+<span class="cstat-no" title="statement not covered" >                var options = {</span>
+                    uri: "https://api.github.com/repos/saulmadi/acklen-slackbot/pulls/" + pull.number + "/merge?access_token=4dcf4b3298bc38faa8bc348ae93fcb4f62aa549b",
+                    method: "PUT",
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
+                    },
+                    body: JSON.stringify({
+                        "commit_message": "merge pull request for" + branchName,
+                        "sha": pull.head.sha
+                    })
+                };
+<span class="cstat-no" title="statement not covered" >                return _this.httpClient(options);</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                console.log("la cague");</span>
+            }
+        });
+    };
     return GithubServices;
 })();
 exports.GithubServices = GithubServices;
@@ -198,7 +297,7 @@ exports.GithubServices = GithubServices;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 17 2015 18:24:04 GMT-0600 (Hora estándar, América Central)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 17 2015 18:56:09 GMT-0600 (Hora estándar, América Central)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

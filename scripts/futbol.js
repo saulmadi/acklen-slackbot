@@ -65,6 +65,11 @@ var Futbol = (function () {
                     _this.messageSender.send(msg, fixtures);
                 });
             });
+            robot.respond(/barcelona fixtures/i, function (msg) {
+                _this.hubotFutbolWisdom.showTeamFixtures(81).then(function (fixtures) {
+                    _this.messageSender.send(msg, fixtures);
+                });
+            });
         };
     }
     return Futbol;

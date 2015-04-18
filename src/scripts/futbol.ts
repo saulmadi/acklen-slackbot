@@ -82,6 +82,13 @@ class Futbol {
 				});
 		});
 
+    robot.respond(/barcelona fixtures/i, (msg: any) => {
+      this.hubotFutbolWisdom.showTeamFixtures(81)
+        .then((fixtures) => {
+          this.messageSender.send(msg, fixtures);
+        });
+    });
+
 	}
 }
 

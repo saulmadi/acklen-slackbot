@@ -7,5 +7,7 @@
   "hubot-maps",
   "hubot-rules",
   "hubot-shipit",
-  "hubot-youtube"
+  "hubot-youtube",
+  "hubot-heroku-keepalive",
+  "hubot-redis-brain",
 ]

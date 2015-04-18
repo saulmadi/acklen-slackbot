@@ -12,6 +12,7 @@ var Merge = (function () {
             robot.respond(/Merge ?(.*)/i, function (msg) {
                 var cardName = msg.match[1];
                 var values = _this.tresloService.moveCard(cardName, "ready for testing");
+                _this.githubService.merge(cardName);
                 _this.messageSender.send(msg, cardName + "is in ready for testing");
             });
         };

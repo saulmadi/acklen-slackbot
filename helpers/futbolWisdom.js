@@ -3,14 +3,15 @@ var HubotFutbolWisdom = (function () {
         this.promise = promise;
     }
     HubotFutbolWisdom.prototype.showHelp = function () {
-        var helpMessage = "Command | Help \n";
-        helpMessage += "premier-league standings | Return the actual season standing for England's Premier League \n";
-        helpMessage += "premier-league fixtures | Return todays date fixtures for England's Premier League \n";
-        helpMessage += "la-liga standings | Return the actual season standing for Spain's La Liga \n";
-        helpMessage += "la-liga fixtures | Return todays date fixtures for Spains's La Liga \n";
-        helpMessage += "bundes-liga standings | Return the actual season standing for Germany's Bundesliga \n";
-        helpMessage += "bundes-liga fixtures | Return todays date fixtures for Germany's Bundesliga \n";
-        helpMessage += "real-madrid fixtures | Return todays date fixtures for Real Madrid \n";
+        var helpMessage = "*Futbol Wisdom Help* \n\n";
+        helpMessage += "*premier-league standings* : _Return the actual season standing for England's Premier League_ \n";
+        helpMessage += "*premier-league fixtures* : _Return todays fixtures for England's Premier League_ \n";
+        helpMessage += "*la-liga standings* : _Return the actual season standing for Spain's La Liga_ \n";
+        helpMessage += "*la-liga fixtures* : _Return todays fixtures for Spains's La Liga_ \n";
+        helpMessage += "*bundes-liga standings* : _Return the actual season standing for Germany's Bundesliga_ \n";
+        helpMessage += "*bundes-liga fixtures* : _Return todays fixtures for Germany's Bundesliga_ \n";
+        helpMessage += "*real-madrid fixtures* : _Return todays fixtures for Real Madrid_ \n";
+        helpMessage += "*barcelona fixtures* : _Return todays fixtures for FC Barcelona_ \n";
         return helpMessage;
     };
     HubotFutbolWisdom.prototype.showTeamFixtures = function (id) {

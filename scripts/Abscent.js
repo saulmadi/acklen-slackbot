@@ -82,7 +82,8 @@ function checkIsAbscent(msg, user) {
                 var abscenceStartTime = result[0].createdAt;
                 var abscenceEndTime = addMinutes(abscenceStartTime, result[0].attributes.Time);
                 if (today > abscenceStartTime && today < abscenceEndTime) {
-                    msg.send(result[0].attributes.User + " is abscent, will be back around " + abscenceEndTime);
+                    var date = new Date(abscenceEndTime.toString());
+                    msg.send(result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
                 }
             }
             else if (format == 'hour') {
@@ -90,7 +91,8 @@ function checkIsAbscent(msg, user) {
                 var abscenceStartTime = result[0].createdAt;
                 var abscenceEndTime = addHours(abscenceStartTime, result[0].attributes.Time);
                 if (today > abscenceStartTime && today < abscenceEndTime) {
-                    msg.send(result[0].attributes.User + " is abscent, will be back around " + abscenceEndTime);
+                    var date = new Date(abscenceEndTime.toString());
+                    msg.send(result[0].attributes.User + " is abscent, will be back around " + date.toLocaleTimeString());
                 }
             }
             else if (format == 'day') {

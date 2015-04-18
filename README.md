@@ -1,5 +1,5 @@
 #Hubot+Typescript
-
+ 
 ###Why? 
 Because TypeScript is the next big thing. Also because hubot scripts are powerful and fun. Why NOT is the better question?
 

@@ -19,7 +19,6 @@
 //  }
 //}
 
-
 var fs: any = require('fs');
 var _: any = require('underscore');
 var projects: any = JSON.parse(fs.readFileSync('project.json', 'utf8'));

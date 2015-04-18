@@ -8,7 +8,7 @@ Yes, Hubot is written in coffeescript. And, normally, hubot scripts are also wri
 
 ##Getting started:   
 
-###You should have a few things installed globally on your dev machine.
+###You should have a few things installed globally on your dev machine. gg
 - Node/npm https://nodejs.org/download/
 - Hubot `npm install -g coffee-script hubot`
 - Gulp `npm install -g gulp`
